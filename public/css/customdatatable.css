@@ -1,0 +1,34 @@
+.dataTables_wrapper.no-footer .dataTables_scrollBody {
+    border-bottom: none !important;
+}
+table.dataTable thead th,
+table.dataTable thead td {
+    padding: 10px;
+    border-bottom: none !important;
+}
+table.dataTable.no-footer {
+    border-bottom: none !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    border: 1px solid #4395d1 !important;
+    background: #4395d1 !important;
+    border-radius: 50%;
+    color: white !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button .current {
+    color: white !important;
+}
+
+.paginate_button:hover {
+    color: black !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: black !important;
+    background: #D2F4FF !important;
+    border: 1px solid #D2F4FF !important;
+    border-radius: 50%;
+}

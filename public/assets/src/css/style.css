@@ -1,0 +1,569 @@
+body{
+    zoom: 80% !important;
+}
+.layout-fixed .main-sidebar{
+    height: auto;
+}
+.preloader{
+    height: 100%;
+}
+.main-footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.select2-container--default .select2-selection--single{
+    padding: 10px 10px 25px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    top: 5px;
+}
+input[type=number] {
+-moz-appearance: textfield;
+}
+.d-none {
+	display: none;
+}
+.full-width{
+	width: 100%;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid{
+	background-image: none;
+}
+.invalid-feedback{
+	text-align: left;
+    margin-bottom: 10px;
+}
+.invalid-error {
+    border-color: #dc3545 !important;
+    -webkit-box-shadow: 0 0 0 0.25rem rgb(220 53 69 / 25%) !important;
+    box-shadow: 0 0 0 0.25rem rgb(220 53 69 / 25%) !important;
+    border-radius: 5px !important;
+}
+#main-content{
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+    margin-bottom: 35px;
+}
+
+.select2-container{
+    width: 100% !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    line-height: normal;
+}
+.edit-text{
+    padding:10px 15px;
+}
+.approve-button{
+    cursor: pointer;
+    color:#09AE24;
+}   
+.endcall-button{
+    cursor: pointer;
+    color:#F70004;
+}   
+.call-button{
+    cursor: pointer;
+    color:#FFC530;
+}   
+.notapprove-button, .sendapprove-button, .startcall-button{
+    cursor: pointer;
+    color:#FF7723;
+}
+.pickup-button, .deal-button{
+    cursor: pointer;
+    color:#7B61FF;
+}
+.nodeal-button{
+    cursor: pointer;
+    color: 	#F300F7;
+}
+.edit-button,.edit-button-color{
+    cursor: pointer;
+    color: 	#22bb33;
+}
+.packing-button{
+    cursor: pointer;
+    color: 	#F300F7;
+}
+.delete-button{
+    cursor: pointer;
+    color: #dc3545;
+}
+#content-header{
+    margin-bottom: 35px;
+}
+.user-panel, .user-panel .info {
+    overflow: visible;
+    white-space: nowrap;
+}
+
+.user-panel .image {
+    display: grid;
+    place-content: center;
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: auto;
+    padding: 0;
+}
+.brand-link{
+    padding: 1.1rem 0.5rem;
+}
+
+.modal-body{
+    max-height: 550px;
+    overflow: auto;
+}
+
+/* IMAGE */
+
+    .box {
+    display: block;
+    min-width: 300px;
+    max-width: 300px;
+    height: 300px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+    }
+
+    .upload-options {
+    position: relative;
+    height: 75px;
+    background-color: cadetblue;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+    -webkit-transition: background-color ease-in-out 150ms;
+    transition: background-color ease-in-out 150ms;
+    }
+    .upload-options:hover {
+    background-color: #7fb1b3;
+    }
+    .upload-options input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    }
+    .upload-options label {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+            align-items: center;
+    width: 100%;
+    height: 100%;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow: hidden;
+    }
+    .upload-options label::after {
+    content: 'Choose Photo';
+    /*font-family: 'Material Icons';*/
+    position: absolute;
+    font-size: 30px;
+    color: #e6e6e6;
+    top: calc(65% - 2.5rem);
+    left: calc(27% - 1.25rem);
+    z-index: 0;
+    }
+    .upload-options label span {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+    text-align: center;
+    }
+    .upload-options label span:hover i.material-icons {
+    color: lightgray;
+    }
+
+    .js--image-preview {
+    height: 225px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-image: url("");
+    background-color: white;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+    .js--image-preview::after {
+    content: "\f03e";
+    font-family: "Font Awesome 5 Free";
+    position: relative;
+    font-size: 4.5em;
+    color: #e6e6e6;
+    top: calc(50% - 3rem);
+    left: calc(50% - 2.25rem);
+    z-index: 0;
+    }
+    .js--image-preview.js--no-default::after {
+    display: none;
+    }
+    .js--image-preview:nth-child(2) {
+    background-image: url("http://bastianandre.at/giphy.gif");
+    }
+
+    i.material-icons {
+    -webkit-transition: color 100ms ease-in-out;
+    transition: color 100ms ease-in-out;
+    font-size: 2.25em;
+    line-height: 55px;
+    color: white;
+    display: block;
+    }
+
+    .drop {
+    display: block;
+    position: absolute;
+    background: rgba(95, 158, 160, 0.2);
+    border-radius: 100%;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    }
+
+    .animate {
+    -webkit-animation: ripple 0.4s linear;
+            animation: ripple 0.4s linear;
+    }
+
+    @-webkit-keyframes ripple {
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(2.5);
+                transform: scale(2.5);
+    }
+    }
+
+    @keyframes ripple {
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(2.5);
+                transform: scale(2.5);
+    }
+    }
+
+    .it .btn-orange
+    {
+    background-color: blue;
+    border-color: #777!important;
+    color: #777;
+    text-align: left;
+    width:100%;
+    }
+    .it input.form-control
+    {
+
+    border:none;
+    margin-bottom:0px;
+    border-radius: 0px;
+    border-bottom: 1px solid #ddd;
+    box-shadow: none;
+    }
+    .it .form-control:focus
+    {
+    border-color: #ff4d0d;
+    box-shadow: none;
+    outline: none;
+    }
+    .fileUpload {
+        position: relative;
+        overflow: hidden;
+    }
+    .fileUpload input.upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+/* IMAGE */
+
+/* LOADER */
+.lds-facebook {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: #FF7723;
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  }
+  .lds-facebook div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+  }
+  .lds-facebook div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+  }
+  .lds-facebook div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+  }
+  @keyframes lds-facebook {
+    0% {
+      top: 8px;
+      height: 64px;
+    }
+    50%, 100% {
+      top: 24px;
+      height: 32px;
+    }
+  }
+/* LOADER */
+#upload-photo-warehouse .box{
+    display: inline-block;
+    min-width: 250px;
+    max-width: 250px;
+    height: 270px;
+}
+#upload-photo-warehouse .upload-options label::after{
+    font-size: 25px;
+    top: calc(55% - 2.5rem);
+    left: calc(30% - 1.25rem);
+}
+
+#modalAdd table th{
+    padding: 5px 15px;
+    font-weight: normal;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+#table-all .bg-white, #table-all td {
+    background-color: #fff !important;
+}
+
+.modal-backdrop{
+    width: 100%;
+    height: 100%;
+}
+
+.styled-checkbox {
+    position: absolute;
+    opacity: 0;
+  }
+  .styled-checkbox + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+  }
+  .styled-checkbox + label:before {
+    content: "";
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: solid 1px #007bff;
+  }
+  .styled-checkbox:hover + label:before {
+    background: #007bff;
+  }
+  .styled-checkbox:focus + label:before {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+  }
+  .styled-checkbox:checked + label:before {
+    background: #007bff;
+  }
+  .styled-checkbox:disabled + label {
+    color: #b8b8b8;
+    cursor: auto;
+  }
+  .styled-checkbox:disabled + label:before {
+    box-shadow: none;
+    background: #ddd;
+  }
+  .styled-checkbox:checked + label:after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    background: white;
+    width: 2px;
+    height: 2px;
+    box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+    transform: rotate(45deg);
+  }
+
+#upload-image{
+    margin-top: 35px;
+}
+
+.tab-pane{
+    padding: 35px 0;
+}
+.tab-pane-font{
+    font-size: 24px !important;
+}
+.tab-pane-font:hover{
+    border-bottom: none;
+    padding-bottom: 1rem;
+}
+.tab-pane-font.active{
+    border-bottom: none;
+    padding-bottom: 1rem;
+}
+
+/* The container */
+.container-checkbox {
+    display: inline;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.container-checkbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container-checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-checkbox input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.container-checkbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-checkbox .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+/* new code */
+.boxs {
+display: block;
+min-width: 300px;
+max-width: 500px;
+height: 300px;
+margin: 10px;
+background-color: white;
+border-radius: 5px;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+-webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+overflow: hidden;
+}
+
+.timeline-wrap {
+width: 500px;
+margin: auto;
+}
+.timeline {
+list-style: none;
+padding-left: 50px;
+position: relative;
+}
+.timeline:before {
+content: "";
+border-left: 3px solid #007bff;
+position: absolute;
+left: 5px;
+top: 5px;
+bottom: 5px;
+}
+
+.timeline li {
+padding: 0;
+padding-bottom: 40px;
+position: relative;
+}
+.timeline li:before {
+content: "";
+position: absolute;
+width: 25px;
+height: 25px;
+background-color: #007bff;
+border: 1px solid #007bff;
+top: 5px;
+left: -56px;
+border-radius: 100%;
+transition: all 0.2s ease-in-out;
+}
+.timeline li:hover:before {
+transform: scale(1.5);
+background-color: #fff;
+border: 1px solid #007bff;
+}
+
+#body-date th{
+    padding: 0;
+}
