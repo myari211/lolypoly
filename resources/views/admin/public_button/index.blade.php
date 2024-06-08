@@ -126,7 +126,7 @@
         setId = id;
         $.ajax({
             method: 'POST',
-            url: '/temporary/public_button/by_id/' + id,
+            url: '/public/temporary/public_button/by_id/' + id,
             dataType: 'json',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -170,7 +170,7 @@
 
         $.ajax({
             method: 'POST',
-            url: '/temporary/public_button/' + store,
+            url: '/public/temporary/public_button/' + store,
             dataType: 'json',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -336,9 +336,9 @@ Route::get('/landing-page/{id}', [App\Http\Controllers\LandingpageController::cl
 //soon change use AUTH
 Route::prefix('temporary')->group(function() {
     Route::prefix('public_button')->group(function() {
-        Route::post('create', [App\Http\Controllers\Admin\PublicButtonController::class, 'create']);
-        Route::post('by_id/{id}', [App\Http\Controllers\Admin\PublicButtonController::class, 'by_id']);
-        Route::post('update/{id}', [App\Http\Controllers\Admin\PublicButtonController::class, 'update']);
-        Route::post('delete/{id}', [App\Http\Controllers\Admin\PublicButtonController::class, 'delete']);
+        Route::post('create', [App\Http\Controllers\Admin\PublicButtonController::class, 'create'])->name('public.public_button.create');
+        Route::post('by_id/{id}', [App\Http\Controllers\Admin\PublicButtonController::class, 'by_id'])->name('public.public_button.by_id');
+        Route::post('update/{id}', [App\Http\Controllers\Admin\PublicButtonController::class, 'update'])->name('public.public_buton.update');
+        Route::post('delete/{id}', [App\Http\Controllers\Admin\PublicButtonController::class, 'delete'])->name('public.public_button.delete');
     });
 });
