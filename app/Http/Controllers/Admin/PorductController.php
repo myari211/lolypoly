@@ -86,24 +86,6 @@ class PorductController extends Controller
                 endif;
             endif;
 
-            //add variant
-            if(isset($request->variant)) {
-                if(count($request->variant) > 0) {
-                    foreach($request->variant as $variant) {
-                        $variant = array(
-                            "id" => Uuid::uuid4()->toString(),
-                            "product_id" => $product_id,
-                            "category" => $request->variant_category,
-                            "value" => $request->variant_value,
-                            "stock" => $request->variant_stock,
-                            "created_at" => Carbon::now(),
-                            "updated_at" => Carbon::now(),
-                        );
-                        $create_variant = DB::table('10_product_variants')->insert($variant);
-                    }
-                }
-            }
-
             if (isset($request->images)) :
                 if (count($request->images) > 0) :
                     foreach ($request->images as $image) {
@@ -127,7 +109,27 @@ class PorductController extends Controller
                     }
                 endif;
             endif;
-            $redirectTo = url('admin/product/edit') . '/' . $product_id;
+
+           
+            if($request->has('name_variant') && $request->has('variant_value') && $request->has('variant')) {
+                $count = count($request->name_variant);
+
+                for($i = 0; $i < $count; $i++) {
+                    $create_variant = DB::table('10_product_variants')->insert([
+                        "id" => Uuid::uuid4()->toString(),
+                        "category" => $request->variant[$i],
+                        "name" => $request->name_variant[$i],
+                        "value" => $request->variant_value[$i],
+                        "product_id" => $product_id,
+                        "created_at" => Carbon::now(),
+                        "updated_at" => Carbon::now(),
+                    ]);
+                }
+            }
+            
+
+
+            $redirectTo = url ('admin/product/edit') . '/' . $product_id;
             $message = 'Successfully Created Data';
             DB::commit();
             return response()->json(['code' => 200, 'message' => $message, 'redirectTo' => $redirectTo, 'data' => $result], 200);
@@ -269,6 +271,26 @@ class PorductController extends Controller
                 }
             }
 
+            if($request->has('name_variant') && $request->has('variant_value') && $request->has('variant')) {
+                $count = count($request->name_variant);
+                
+                $delete_variant = DB::table('10_product_variants')
+                    ->where('product_id', $id_encode)
+                    ->delete();
+
+                for($i = 0; $i < $count; $i++) {
+                    $create_variant = DB::table('10_product_variants')->insert([
+                        "id" => Uuid::uuid4()->toString(),
+                        "category" => $request->variant[$i],
+                        "name" => $request->name_variant[$i],
+                        "value" => $request->variant_value[$i],
+                        "product_id" => $id_encode,
+                        "created_at" => Carbon::now(),
+                        "updated_at" => Carbon::now(),
+                    ]);
+                }   
+            }
+
             $redirectTo = route('product.index');
             $message = 'Successfully Updated Data';
             DB::commit();
@@ -405,6 +427,10 @@ class PorductController extends Controller
             $result = Product::find($id);
             $result->updatedBy = GeneralFunction::myId();
             $result->delete();
+
+            $delete_variant = DB::table('10_product_variants')
+                ->where('product_id', $id)
+                ->delete();
 
             DB::commit();
             return response()->json(['metaData' => ['code' => 200, 'message' => 'Data Deleted Successfully.'], 'response' => $result], 200);
@@ -548,5 +574,16 @@ class PorductController extends Controller
             DB::rollback();
             return response()->json(['code' => 500, 'message' => 'Wops, something when wrong.', 'error_message' => $e->getMessage()], 200);
         }
+    }
+
+    public function get_variant($id) {
+        $data = DB::table('10_product_variants')
+            ->where('product_id', $id)
+            ->get();
+
+        return response()->json([
+            "success" => true,
+            "data" => $data,
+        ]);
     }
 }

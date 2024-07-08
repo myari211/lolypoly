@@ -119,6 +119,17 @@
 									</div>
 								</div>
 							</div>
+							<div class="row mt-4">
+								<div class="col-lg-12 d-flex justify-content-between">
+									<h4>Variant</h4>
+									<button type="button" class="btn btn-md rounded btn-primary" data-toggle="modal" data-target="#ModalVariant">Add Variant</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<div id="variant" class="row"></div>
+								</div>
+							</div>
 						</div>
 					</div>
 					
@@ -235,16 +246,167 @@
 		</div>
 	</div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalVariant" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="modalAddLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalAddLabel">Add Variant</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-12">
+						<div class="form-group">
+							<label>Variant</label>
+							<select class="form-control" id="ChooseVariant" style="height: 50px;" onChange="ChangeVariant()">
+								<option value="general">General</option>
+								<option value="color">Color</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-6">
+						<label>Variant Name</label>
+						<input type="text" class="form-control rounded" name="name_variant" id="NameVariant" style="height: 50px" placeholder="Ex: Size, Case, etc.">
+					</div>
+					<div class="col-6">
+						<label>Variant</label>
+						<input name="variant" class="form-control" id="Variant" style="height: 50px;" placeholder="Input value here">
+					</div>
+				</div>
+				<div class="row mt-5">
+					<div class="col-12 d-flex justify-content-end">
+						<button type="button" class="btn btn-md rounded btn-outline-primary z-depth-0 rounded-pill" onClick="AddVariant()">
+							<i class="fas fa-plus"></i>
+							Add Variant
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection
 
 @push('body-scripts')
+<script type="text/javascript">
+	let data = [];
+
+function ChangeVariant(e) {
+	var Variant = $('#ChooseVariant').val();
+
+	if(Variant == 'color') {
+		$('#variant').attr('type', 'color');
+	}
+	else {
+		$('#variant').attr('type', 'text');
+		$('#variant').attr('value', '');
+	}
+}
+
+function AddVariant() {
+	var Variant = $('#ChooseVariant').val();
+	var VariantName = $('#NameVariant').val();
+	var VariantValue = $('#Variant').val();
+
+	if(VariantName && VariantValue) {
+		data.push(
+			{
+				"variant" : Variant,
+				"name_variant": VariantName,
+				"variant_value": VariantValue,
+			}
+		);
+		
+		showingVariant();
+		closeModal();
+		console.log(data);
+	}
+	else {
+		alert('ada data yang kosong ketika Add Variant!');
+	}
+}
+
+function closeModal() {
+	$('#ModalVariant').modal('hide');
+	$('#ChooseVariant').val();
+	$('#NameVariant').val();
+	$('#Variant').val();
+}
+
+function showingVariant() {
+	$('#variant').empty(); // Mengosongkan elemen sebelum menambahkan elemen baru
+	data.forEach(function(datas) {
+		$('#variant').append(
+			"<div class='col-lg-3'>" +
+				"<div class='card'>" +
+					"<input type='text' class='d-none' value='"+datas.name_variant+"' name='name_variant[]'>" +
+					"<input type='text' class='d-none' value='"+datas.variant_value+"' name='variant_value[]'>" +
+					"<input type='text' class='d-none' value='"+datas.variant+"' name='variant[]'>" +
+					"<div class='card-body'>" +
+						"<div class='row'>" +
+							"<div class='col-lg-12 d-flex justify-content-between align-items-center'>" +
+								"<div>" +
+									"<span style='font-weight: 500' class='text-muted'>" + datas.name_variant + "</span>" +
+									"<span> (" + datas.variant + ") </span>" +
+								"</div>" +
+								"<button type='button' class='btn btn-outline-danger rounded-pill z-depth-0' onclick='DeleteVariant(\"" + datas.variant_value + "\")'>Delete</button>" +
+							"</div>" +
+						"</div>" +
+						"<div class='row'>" +
+							"<div class='col-lg-12'>" +
+								"<span class='text-primary' style='font-weight:600; font-size: 22px'>" + datas.variant_value + "</span>" +
+							"</div>" +
+						"</div>" +
+					"</div>" +
+				"</div>" +
+			"</div>"
+		);
+	});
+}
+
+function DeleteVariant(param) {
+	data = data.filter(function(item) {
+		return item.variant_value !== param;
+	});
+
+	showingVariant();
+}
+</script>
 <script>
 	$(document).ready(function() {
         $('#addvarian').click(function() {
             // Clear the form fields
             $('#submit-form-variant')[0].reset();
         });
+
+		checkVariant();
     });
+
+	function checkVariant() {
+		var productId = $('#id').val();
+
+		$.ajax({
+			method: 'GET',
+			url: '/temporary/product/variant/' + productId,
+			success: function(result) {
+				console.log(result);
+				result.data.map((item) => {
+					data.push({
+						"variant" : item.category,
+						"name_variant" : item.name,
+						"variant_value" : item.value,
+					});
+				})
+				showingVariant();
+			}
+		});
+	}
 
 	$(document).on('click', '#add-image', function (e) {
 		e.preventDefault();

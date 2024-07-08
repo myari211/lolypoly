@@ -341,4 +341,8 @@ Route::prefix('temporary')->group(function() {
         Route::post('update/{id}', [App\Http\Controllers\Admin\PublicButtonController::class, 'update'])->name('public.public_buton.update');
         Route::post('delete/{id}', [App\Http\Controllers\Admin\PublicButtonController::class, 'delete'])->name('public.public_button.delete');
     });
+
+    Route::prefix('product')->group(function() {
+        Route::get('variant/{id}', [App\Http\Controllers\Admin\PorductController::class, 'get_variant'])->name('public.public_get_variant');
+    });
 });

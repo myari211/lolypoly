@@ -78,6 +78,15 @@
                             <span>Stok Habis!</span>
                         </div>
                     @endif
+                    <div class="row mb-4 mt-5">
+                        <div class="col-lg-12">
+                            @foreach($variant as $item)
+                                <div class="badge static-blue-button rounded-pill pt-2 pb-2 pr-4 pl-4 z-depth-0">
+                                    <span style="font-size:18px; font-weight: 500">{{ $item->value }}</span>    
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                     <div class="row border-top pt-3">
                         <button type="submit"
                             class="col text-center border-custom p-3 m-2 static-blue-button to-cart-button"

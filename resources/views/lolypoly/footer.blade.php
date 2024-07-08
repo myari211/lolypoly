@@ -118,7 +118,7 @@
     <div class="d-flex justify-content-end gap-3">
         @foreach($public_button as $data)
             <div>
-                <button type="button" class="btn btn-md bg-main rounded-circle text-center d-lfex justify-content-center align-items-center">
+                <button type="button" class="btn btn-md bg-main rounded-circle text-center d-lfex justify-content-center align-items-center" onclick="window.open('{{ $data->url }}')">
                     <i class="{{ $data->icon }} h6 text-white"></i>
                 </button>
             </div>
