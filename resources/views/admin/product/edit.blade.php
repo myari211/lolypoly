@@ -389,11 +389,13 @@ function DeleteVariant(param) {
     });
 
 	function checkVariant() {
-		var productId = $('#id').val();
+		var url = "{{ route('public.public_get_variant', $data_product->id) }}";
+
+		console.log(url);
 
 		$.ajax({
 			method: 'GET',
-			url: '/temporary/product/variant/' + productId,
+			url: url,
 			success: function(result) {
 				console.log(result);
 				result.data.map((item) => {
